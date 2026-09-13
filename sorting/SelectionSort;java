@@ -1,0 +1,25 @@
+public class SelectionSort {
+   
+    private static int findMinIndex (int[] arr, int start) {
+        int minIndex = start;
+        for (int i = start + 1; i < arr.length; i++) {
+            if (arr[i] < arr[minIndex]) {
+                minIndex = i;
+            }
+        }
+        return minIndex; 
+    }
+   
+    static void apply(int[] arr, int start) {
+        if (arr.length  - start <= 1) {
+            return; 
+        }
+        int minIndex = findMinIndex(arr,start);
+        if (arr[start] > arr[minIndex]) {
+            int temp = arr[start];
+            arr[start] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+        apply(arr, start + 1);
+    }
+}
